@@ -1,0 +1,36 @@
+syntax = "proto3";
+option java_package = "com.funnify.app";
+
+
+enum AuthProvider {
+    GOOGLE = 0;
+    FACEBOOK = 1;
+}
+
+message Result {
+    bool success = 1;
+}
+
+message AuthenticateRequest {
+    string idToken = 1;
+    AuthProvider provider = 2;
+}
+
+message AuthenticateResponse {
+    Result result = 1;
+    string sessionKey = 2;
+}
+
+service FunnifyService {
+    rpc authenticate (AuthenticateRequest) returns (AuthenticateResponse);
+}
+
+/*
+gRPC HOWTO:
+Compile into python script:
+    python -m grpc_tools.protoc -I=[input directory] --python_out=[output directory] --grpc_python_out=[output directory] [file name].proto
+    python -m grpc_tools.protoc -I=./grpcs/protos/ --python_out=./grpcs/py/ --grpc_python_out=./grpcs/py/ auth.proto
+Compile into java source:
+    protoc --java_out=[output directory] --grpc_java_out=[output directory] [file name].proto
+etc.
+*/
