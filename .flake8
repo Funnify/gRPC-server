@@ -1,0 +1,4 @@
+[flake8]
+exclude =
+    auth_pb2.py,
+    auth_pb2_grpc.py
