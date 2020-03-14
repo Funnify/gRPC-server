@@ -5,8 +5,8 @@ services:
     build:
       context: .
     ports:
-    - "50051:50051"
+      - "50051:50051"
     volumes:
-    - ./app:./app
+      - app-data:/opt/app-data
     command: >
       sh -c "echo Hi!"
