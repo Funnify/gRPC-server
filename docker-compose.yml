@@ -7,6 +7,6 @@ services:
     ports:
     - "50051:50051"
     volumes:
-    - /
+    - /app
     command: >
-      sh -c "python server.py"
+      sh -c "cd /app && python server.py"
