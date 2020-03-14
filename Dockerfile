@@ -1,7 +1,9 @@
-FROM python:3
-WORKDIR /opt/app-data
-COPY requirements.txt /opt/app-data
-RUN pip install --no-cache-dir -r requirements.txt
+# getting base image (ubuntu)
+FROM python:3.5-slim
 
-FROM ubuntu
-CMD echo "docker is running"
+MAINTAINER qobiljon <qobiljon.toshnazarov@gmail.com>
+WORKDIR /code
+
+COPY ./ /code/
+RUN pip install -r /code/requirements.txt
+CMD ["python", "server.py"]

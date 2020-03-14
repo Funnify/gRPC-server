@@ -1,12 +1,9 @@
 version: "3"
 
 services:
-  app:
-    build:
-      context: .
+  database:
+    image: postgres:12.2
+  web:
+    image: nginx:1.17.9
     ports:
-      - "50051:50051"
-    volumes:
-      - /opt/app-data
-    command: >
-      sh -c "echo Hi!"
+      - 9876:80/tcp
