@@ -7,6 +7,6 @@ services:
     ports:
     - "50051:50051"
     volumes:
-    - ./:./
+    - /
     command: >
       sh -c "python server.py"
